@@ -4,7 +4,8 @@ import 'reusable_card.dart';
 import 'icon_content.dart';
 
 const bottomContainerHeight = 80.0;
-const Color boxColor = Color(0xFF89B5AF);
+const Color activeBoxColor = Color(0xFFABD9CF);
+const Color inactiveBoxColor = Color(0xFF89B5AF);
 const Color bottomColor = Color(0xffD0CAB2);
 
 class InputPage extends StatefulWidget {
@@ -13,6 +14,28 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleBoxColor = inactiveBoxColor;
+  Color femaleBoxColor = inactiveBoxColor;
+
+  void updateColor(int gender){
+    if(gender == 1){
+      if(maleBoxColor == inactiveBoxColor){
+        maleBoxColor = activeBoxColor;
+        femaleBoxColor = inactiveBoxColor;
+      }else{
+        maleBoxColor = inactiveBoxColor;
+      }
+    }else{
+      if(femaleBoxColor == inactiveBoxColor){
+        femaleBoxColor = activeBoxColor;
+        maleBoxColor = inactiveBoxColor;
+      }else{
+        femaleBoxColor = inactiveBoxColor;
+      }
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,26 +47,40 @@ class _InputPageState extends State<InputPage> {
             child: Row(
           children: [
             Expanded(
-              child: ReusableCard(
-                  color: boxColor,
-                  cardChild: CardChildColumn('MALE', FontAwesomeIcons.mars)),
+              child: GestureDetector(
+                onTap:(){
+                  setState(() {
+                    updateColor(1);
+                  });
+                },
+                child: ReusableCard(
+                    color: maleBoxColor,
+                    cardChild: CardChildColumn('MALE', FontAwesomeIcons.mars)),
+              ),
             ),
             Expanded(
-                child: ReusableCard(
-                    color: boxColor,
-                    cardChild:
-                        CardChildColumn('FEMALE', FontAwesomeIcons.venus)))
+                child: GestureDetector(
+                  onTap:(){
+            setState(() {
+              updateColor(2);
+            });
+            },
+                  child: ReusableCard(
+                      color: femaleBoxColor,
+                      cardChild:
+                          CardChildColumn('FEMALE', FontAwesomeIcons.venus)),
+                ))
           ],
         )),
-        Expanded(child: ReusableCard(color: boxColor)),
+        Expanded(child: ReusableCard(color: activeBoxColor)),
         Expanded(
             child: Row(
           children: [
             Expanded(
-              child: ReusableCard(color: boxColor),
+              child: ReusableCard(color: activeBoxColor),
             ),
             Expanded(
-              child: ReusableCard(color: boxColor),
+              child: ReusableCard(color: activeBoxColor),
             )
           ],
         )),
