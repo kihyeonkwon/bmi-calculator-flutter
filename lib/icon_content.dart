@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'konstants.dart';
 
 class CardChildColumn extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class CardChildColumn extends StatelessWidget {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Icon(icon, size: 80.0),
       SizedBox(height: 15.0),
-      Text(text, style: TextStyle(fontSize: 18.0, color: Color(0xFF8d8e98)))
+      Text(text, style: kBoxTextStyle)
     ]);
   }
 }
