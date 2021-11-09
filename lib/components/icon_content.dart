@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'konstants.dart';
+import '../konstants.dart';
 
 class CardChildColumn extends StatelessWidget {
   @override
