@@ -10,7 +10,7 @@ class ResultsPage extends StatelessWidget {
     final BMIBrain _brain = ModalRoute.of(context).settings.arguments;
     return Scaffold(
         appBar: AppBar(
-          title: Text('BMI CALCULATOR'),
+          title: Text('BMI CALCULATOR!'),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
